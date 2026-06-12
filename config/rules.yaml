@@ -1,0 +1,38 @@
+# 自定义检测规则
+rules:
+  - name: "high_error_rate"
+    type: "regex"
+    pattern: "\\s5\\d{2}\\s"
+    level: "error"
+    priority: 10
+    scope: "*"
+    action: "alert"
+    enabled: true
+
+  - name: "api_slow_response"
+    type: "threshold"
+    pattern: ""
+    threshold: 2000.0
+    level: "warning"
+    priority: 8
+    scope: "/api/*"
+    action: "alert"
+    enabled: true
+
+  - name: "database_error"
+    type: "keyword"
+    pattern: "database error,connection pool exhausted,deadlock"
+    level: "error"
+    priority: 9
+    scope: "*"
+    action: "alert"
+    enabled: true
+
+  - name: "ignore_health_check"
+    type: "regex"
+    pattern: "GET /health"
+    level: "info"
+    priority: 100
+    scope: "*"
+    action: "ignore"
+    enabled: true

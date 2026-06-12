@@ -1,0 +1,10 @@
+# 项目注册表
+default_project: "default"
+projects:
+  - project_id: "default"
+    name: "默认项目"
+    description: "默认日志巡检项目"
+    config_dir: ""
+    database_path: "data/log_inspector.db"
+    allowed_users: []
+    active: true

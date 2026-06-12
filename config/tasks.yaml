@@ -1,0 +1,19 @@
+# 定时巡检任务
+tasks:
+  - name: "nginx_hourly"
+    cron: "0 * * * *"
+    log_sources:
+      - "/var/log/nginx/access.log"
+      - "/var/log/nginx/error.log"
+    rules: []
+    enabled: true
+
+  - name: "app_every_30min"
+    cron: "*/30 * * * *"
+    log_sources:
+      - "/var/log/app/node.log"
+      - "/var/log/app/django.log"
+    rules:
+      - "exception_keyword"
+      - "slow_request_critical"
+    enabled: true
